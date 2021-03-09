@@ -2,21 +2,39 @@
 <template>
     <v-container fluid fill-height class="home-hero">
         <v-layout justify-center align-center column pa-5>
-            <div class="display-3 font-weight black--text text-xs-center">Please enter the URL below</div>
+            <div class="display-3 font-weight black--text text-xs-center">
+                <h3>Please enter the URL below</h3>
+            </div>
             <div>
-              <input v-model="url" placeholder="URL..." v-on:keyup.enter="launchChromeAndRunLighthouse(url)">
-              <button type = "submit" class = "btn btn-primary" v-on:click="launchChromeAndRunLighthouse('https://spinbot.com/')"> Generate Report</button>
+                <input
+                    v-model="url"
+                    placeholder="URL..."
+                    v-on:keyup.enter="runScript(url)"
+                />
+                <button
+                    type="submit"
+                    class="btn btn-primary"
+                    v-on:click="
+                        runScript('https://spinbot.com/')
+                    "
+                >
+                    Generate Report
+                </button>
             </div>
         </v-layout>
     </v-container>
 </template>
 
 <script>
-import launchChromeAndRunLighthouse from "../lh.js";
-export default {
-    name: 'HomeHero'
-};
+ const lighthouseMethods = require('../lh.js');
 
+export default {
+    name: 'HomeHero',
+    methods:{
+        runScript(url){
+            lighthouseMethods.launchChromeAndRunLighthouse(url);
+        }}
+};
 </script>
 
 <style scoped>

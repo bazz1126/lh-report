@@ -1,11 +1,28 @@
 <template>
     <v-container fluid fill-height class="home-hero">
         <v-layout justify-center align-center column pa-5>
-            <div class="display-4 font-weight black--text text-xs-center">Test Your Website Now</div>
-            <div class="display-12 black--text text-center">With LHReport you can keep tabs on the progress of your website or any website thanks to Google Lighthouse. With LHReport you can keep a log of all the tests you have conducted on your website.</div>
+            <div class="display-4 font-weight black--text text-xs-center">
+                Test Your Website Now
+            </div>
+            <div class="display-12 black--text text-center">
+                With LHReport you can keep tabs on the progress of your website
+                or any website thanks to Google Lighthouse. With LHReport you
+                can keep a log of all the tests you have conducted on your
+                website.
+            </div>
             <div class="mx-auto">
-              <v-btn class="hidden-sm-and-down mx-3" color="red lighten-1" to="/sign-in">SIGN IN</v-btn>
-              <v-btn class="hidden-sm-and-down mx-3" color="red lighten-1" to="/join">JOIN</v-btn>
+                <v-btn
+                    class="hidden-sm-and-down mx-3"
+                    color="red lighten-1"
+                    to="/sign-in"
+                    >SIGN IN</v-btn
+                >
+                <v-btn
+                    class="hidden-sm-and-down mx-3"
+                    color="red lighten-1"
+                    to="/join"
+                    >JOIN</v-btn
+                >
             </div>
         </v-layout>
     </v-container>

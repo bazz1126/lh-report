@@ -9,27 +9,34 @@
                     <v-card-text>
                         <v-form ref="form" v-model="valid" lazy-validation>
                             <v-text-field
-                              name="email"
-                              label="Email"
-                              type="email"
-                              v-model="email"
-                              :rules="emailRules"
-                              required>
+                                name="email"
+                                label="Email"
+                                type="email"
+                                v-model="email"
+                                :rules="emailRules"
+                                required
+                            >
                             </v-text-field>
                             <v-text-field
-                              name="password"
-                              label="Password"
-                              id="password"
-                              type="password"
-                              required
-                              v-model="password"
-                              :rules="passwordRules">
+                                name="password"
+                                label="Password"
+                                id="password"
+                                type="password"
+                                required
+                                v-model="password"
+                                :rules="passwordRules"
+                            >
                             </v-text-field>
                         </v-form>
                     </v-card-text>
                     <v-card-actions>
                         <v-spacer></v-spacer>
-                        <v-btn color="primary" :disabled="!valid" @click="submit">Join</v-btn>
+                        <v-btn
+                            color="primary"
+                            :disabled="!valid"
+                            @click="submit"
+                            >Join</v-btn
+                        >
                     </v-card-actions>
                 </v-card>
             </v-flex>

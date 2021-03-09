@@ -4,41 +4,39 @@ const lighthouse = require('lighthouse');
 const chromeLauncher = require('chrome-launcher');
 // const argv = require('yargs').argv;
 // const url = argv.url;
-const url = require('url');
-const fs = require('fs');
-//imports the glob dependency that allows dor pattern matching when searching for files
-const glob = require('glob');
-const path = require('path');
+// const url = require('url');
+// const fs = require('fs');
+// //imports the glob dependency that allows dor pattern matching when searching for files
+// const glob = require('glob');
+// const path = require('path');
 
-launchChromeAndRunLighthouse('https://spinbot.com/');
-export const launchChromeAndRunLighthouse = (url) => {
-  console.log(url);
-  let resultsJSON;
-  // step one: opem chrome using chrome launcher and pass it the url
-  // This launch function returns a promise so it ill either be fulfilled or rejected.
-  return chromeLauncher.launch().then((chrome) => {
-    // chrome is a chrome object of the webpage that was launched
-    console.log(chrome);
-    //once the chrome page is launched the url is passed into the lighthouse function that starts the audit of the website entered
-    const opts = {
-      // These are the option arguments that are passed with the url
-      port: chrome.port, // identifying the port by access the chrome object port the website is open on. This port links the lighthouse instance with the chrome browswer
-    };
-    return lighthouse(url, opts).then(results => {
-    // kills the chrome window closing it
-    return chrome.kill().then(() => {
-    return {
-      js: results.lhr,
-      json: results.report
-    };
-  });
-  resultsJSON = results.report;
-});
-// logs report from results to the console
-      console.log(resultsJSON);
+// launchChromeAndRunLighthouse('https://spinbot.com/');
+export const launchChromeAndRunLighthouse = url => {
+    console.log(url);
+
+    // step one: opem chrome using chrome launcher and pass it the url
+    // This launch function returns a promise so it ill either be fulfilled or rejected.
+    return chromeLauncher.launch().then(chrome => {
+        // chrome is a chrome object of the webpage that was launched
+        console.log(chrome);
+        //once the chrome page is launched the url is passed into the lighthouse function that starts the audit of the website entered
+        const opts = {
+            // These are the option arguments that are passed with the url
+            port: chrome.port // identifying the port by access the chrome object port the website is open on. This port links the lighthouse instance with the chrome browswer
+        };
+        return lighthouse(url, opts).then(results => {
+            console.log(results.report);
+            // kills the chrome window closing it
+            return chrome.kill().then(() => {
+                return {
+                    js: results.lhr,
+                    json: results.report
+                };
+            });
+        });
+        // logs report from results to the console
     });
 };
-
 
 // const getContents = pathStr => {
 //   const output = fs.readFileSync(pathStr, "utf8", (err, results) => {
